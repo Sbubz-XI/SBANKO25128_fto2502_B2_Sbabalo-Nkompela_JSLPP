@@ -1,7 +1,7 @@
 import {
   saveTasksToLocalStorage,
   loadTasksFromLocalStorage,
-} from "./taskStorage.js";
+} from "./storage.js";
 import { updateTaskUI } from "./taskUI.js";
 import { openModal, closeModal } from "./taskModals.js";
 
@@ -34,16 +34,15 @@ export function saveTask() {
   let task = tasks.find((t) => t.id === taskId);
   if (!task) return;
 
-  const oldStatus = task.status; // Store old status
+  const oldStatus = task.status;
   task.title = document.getElementById("task-title").value;
   task.description = document.getElementById("task-desc").value;
   task.status = document.getElementById("task-status").value;
 
   saveTasksToLocalStorage(tasks);
-  updateTaskUI(tasks); // Ensure it moves to the correct column
+  updateTaskUI(tasks);
   closeModal("task-modal");
 
-  // ✅ Log task movement
   if (task.status !== oldStatus) {
     console.log(`"${task.title}" has been moved to "${task.status}"`);
   }
