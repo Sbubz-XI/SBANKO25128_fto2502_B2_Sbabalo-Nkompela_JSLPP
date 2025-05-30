@@ -9,13 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/output.css" />
     <link rel="stylesheet" href="src/styles.css" />
+    <link rel="stylesheet" href="src/appearance.css" />
+    <link rel="stylesheet" href="src/modals.css" />
     <link rel="icon" type="image/png" href="assets/icon-board.svg">
     <title>Kanban task manager</title>
   </head> 
 
   <body class="flex max-w-screen max-h-screen" style="font-family: 'Plus Jakarta Sans', sans-serif;">
 
-      <nav class="hidden md:block bg-white shadow-xl border-[#828FA3] pr-4 h-screen w-75 md:w-75">
+      <nav class="hidden md:block bg-white dark:bg-[#2B2C37] shadow-xl border-[#828FA3] pr-4 h-screen w-75 md:w-75">
         
         <div class="hidden md:block w-45 h-20  bg-no-repeat bg-center bg-contain mx-3.5 my-2.5 " style="background-image: url('assets/logo-light.svg');" alt="Main Logo">
         </div>
@@ -26,12 +28,36 @@
           <button class="bg-[#635FC7] text-white text-md hover:bg-[#A8A4FF] hover:text- font-semibold w-69 h-11 py-2 pr-15 rounded-r-3xl">Launch Career</button>
 
         </div>
+
+        <div class="block">
+
+          <div class="theme-btn">
+
+            ☀️
+            <div class="outer-btn">
+
+              <div class="inner-btn">
+
+            </div>
+            🌑
+
+          </div>
+
+          <div class="hide-sidebar">
+
+            🚫
+            <h3>Hide Sidebar</h3>
+
+          </div>
+
+        </div>
+        
       </nav>
 
     <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
       <div>
         
-        <header class="bg-white w-screen h-20 md:h-24.25 shadow-xl border-[#828FA3] flex items-center pl-4">
+        <header class="bg-white dark:bg-[#2B2C37] dark:text-white w-screen h-20 md:h-24.25 shadow-xl border-[#828FA3] flex items-center pl-4">
           
           <div class="flex md:justify-start md:flex">
 
@@ -51,7 +77,7 @@
 
         </header>
 
-        <div class="bg-[#F4F7FD] w-full h-full">
+        <div class="bg-[#F4F7FD] dark:bg-[#20212C] w-full h-full">
 
           <main class="pl-4 pt-5 pr-4 w-screen md:pr-40 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7">
 
