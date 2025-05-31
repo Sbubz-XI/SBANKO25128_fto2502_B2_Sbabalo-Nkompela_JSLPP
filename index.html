@@ -29,7 +29,7 @@
 
         </div>
 
-        <div class="block">
+        <div class="sidebar-footer">
 
           <div class="theme-btn">
 
@@ -43,12 +43,7 @@
 
           </div>
 
-          <div class="hide-sidebar">
-
-            🚫
-            <h3>Hide Sidebar</h3>
-
-          </div>
+          <button class="hide-sidebar"><span>🚫</span>Hide Sidebar</button>
 
         </div>
         
@@ -69,7 +64,7 @@
 
           <div class="absolute right-0  md:justify-end md:items-center md:mr-5">
 
-            <button onclick="openAddTaskModal()" class="cursor-pointer hidden md:flex bg-[#635FC7] text-white p-2 rounded-2xl w-full"> Add Task </button>
+            <button onclick="openAddTaskModal()" class="cursor-pointer hidden md:flex bg-[#635FC7] text-white p-2 rounded-2xl w-full"> + Add New Task </button>
 
             <button onclick="openAddTaskModal()" class="cursor-pointer flex md:hidden bg-[#635FC7] text-white text-3xl items-center justify-center w-9 h-9 pb-2 rounded-2xl mr-3"> + </button>
 
@@ -132,10 +127,11 @@
               <dialog id="task-modal">
 
                 <form method="dialog" id="task-form">
+                  <button onclick="closeModal()"  class="close-modal">&times;</button>
                   <div class="modal-header">
                     <h3>Edit Task</h3>
                   </div>
-          
+                            
                   <label for="task-title">Title</label>
                   <input type="text" id="task-title" name="title" required />
           
@@ -150,7 +146,6 @@
                   </select>
                   <div class="block">
                     <button onclick="saveTask()"  class="bg-[#635FC7] cursor-pointer text-white my-2 px-4 py-2 rounded-lg">Save</button>
-                    <button onclick="closeModal()"  class="bg-[#F4F7FD] cursor-pointer text-[#635FC7]px-4 py-2 rounded-lg ">Close</button>
                   </div>
                 </form>
 
@@ -159,6 +154,7 @@
               <!-- Add Task Modal -->
               <dialog id="add-task-modal">
                 <form method="dialog" id="add-task-form">
+                  <button type="button" id="close-add-modal-btn" class="close-modal">&times;</button>
                   <div class="modal-header">
                     <h3>Add New Task</h3>
                   </div>
@@ -167,7 +163,7 @@
                   <input type="text" id="new-task-title" name="title" required />
 
                   <label for="new-task-desc">Description</label>
-                  <textarea id="new-task-desc" name="description" rows="4"></textarea>
+                  <textarea id="new-task-desc" name="description" rows="4" placeholder="e.g Pet your dog, have a cup of coffee, dance to your favourite song and come back to crush this challenge. "></textarea>
 
                   <label for="new-task-status">Status</label>
                   <select id="new-task-status" name="status" required>
@@ -176,8 +172,7 @@
                     <option value="done">Done</option>
                   </select>
                   <div class="items-center">
-                    <button type="button" id="save-new-task-btn" class="bg-[#635FC7] text-white px-4 py-2 rounded-lg">Save Task</button>
-                    <button type="button" id="close-add-modal-btn" class="bg-[#F4F7FD] text-[#635FC7] px-4 py-2 rounded-lg">Close</button>
+                    <button type="button" id="save-new-task-btn" class="save-modal">Create Task</button>
                   </div>
                 </form>
               </dialog>

@@ -1,4 +1,7 @@
 .sidebar-footer {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 
 .theme-btn {
@@ -22,11 +25,13 @@
 }
 
 .inner-btn {
-  background-color: ;
+  background-color: white;
+  border-radius: 50px;
 }
 
 .hide-sidebar {
   background-color: #f4f7fd;
+  color: #635fc7;
   max-height: 48px;
   max-width: 251px;
   border-radius: 6px;

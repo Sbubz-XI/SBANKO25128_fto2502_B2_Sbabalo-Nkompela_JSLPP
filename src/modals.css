@@ -27,6 +27,30 @@ dialog {
 }
 
 /* Header */
+.close-modal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  line-height: 0.5;
+  cursor: pointer;
+  color: #ea5555;
+  transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+  transition-delay: 0.1s; /* Delay before scaling */
+}
+
+.save-modal {
+  justify-content: center;
+  color: white;
+  background-color: #635fc7;
+  border-radius: 20px;
+  margin-top: 1rem;
+  width: 100%;
+  height: 2.5rem;
+}
+
 .modal-header {
   display: flex;
   justify-content: space-between;
