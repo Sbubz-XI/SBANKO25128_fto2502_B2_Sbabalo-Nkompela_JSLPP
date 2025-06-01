@@ -1,7 +1,8 @@
 export function saveTasksToLocalStorage(tasks) {
-  localStorage.setItem("kanban_tasks", JSON.stringify(tasks));
+  localStorage.setItem("kanbanTasks", JSON.stringify(tasks));
 }
 
 export function loadTasksFromLocalStorage() {
-  return JSON.parse(localStorage.getItem("kanban_tasks")) || [];
+  const storedTasks = localStorage.getItem("kanbanTasks");
+  return storedTasks ? JSON.parse(storedTasks) : [];
 }

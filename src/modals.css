@@ -47,7 +47,17 @@ dialog {
   background-color: #635fc7;
   border-radius: 20px;
   margin-top: 1rem;
-  width: 100%;
+  width: 40%;
+  height: 2.5rem;
+}
+
+.delete-modal {
+  justify-content: center;
+  color: white;
+  background-color: #ea5555;
+  border-radius: 20px;
+  margin-top: 1rem;
+  width: 40%;
   height: 2.5rem;
 }
 

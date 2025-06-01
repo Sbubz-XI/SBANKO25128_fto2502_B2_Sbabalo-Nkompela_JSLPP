@@ -15,180 +15,204 @@
     <title>Kanban task manager</title>
   </head> 
 
-  <body class="flex max-w-screen max-h-screen" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+  <body class="flex flex-col max-w-screen h-100vh" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+ 
+    <nav class="hidden md:block relative bg-white dark:bg-[#2B2C37] shadow-xl border-[#828FA3] pr-4 h-screen w-75 md:w-75">
+      
+      <div class="hidden md:block w-45 h-20  bg-no-repeat bg-center bg-contain mx-3.5 my-2.5 " style="background-image: url('assets/logo-light.svg');" alt="Main Logo">
+      </div>
 
-      <nav class="hidden md:block bg-white dark:bg-[#2B2C37] shadow-xl border-[#828FA3] pr-4 h-screen w-75 md:w-75">
-        
-        <div class="hidden md:block w-45 h-20  bg-no-repeat bg-center bg-contain mx-3.5 my-2.5 " style="background-image: url('assets/logo-light.svg');" alt="Main Logo">
-        </div>
+      <div class="block md:hidden W-auto h-auto bg-no-repeat bg-center bg-contain" style="background-image: url('assets/favicon.svg');" alt="Mobile Logo"></div>
 
-        <div class="block md:hidden W-auto h-auto bg-no-repeat bg-center bg-contain" style="background-image: url('assets/favicon.svg');" alt="Mobile Logo"></div>
-
-          <h4 class=" text-[#828FA3] text-md ml-7 py-3.5">ALL BOARDS (1)</h4>
-          <button class="bg-[#635FC7] text-white text-md hover:bg-[#A8A4FF] hover:text- font-semibold w-69 h-11 py-2 pr-15 rounded-r-3xl">Launch Career</button>
-
-        </div>
-
-        <div class="sidebar-footer">
-
-          <div class="theme-btn">
-
-            ☀️
-            <div class="outer-btn">
-
-              <div class="inner-btn">
-
-            </div>
-            🌑
-
-          </div>
-
-          <button class="hide-sidebar"><span>🚫</span>Hide Sidebar</button>
-
-        </div>
-        
-      </nav>
-
-    <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
-      <div>
-        
-        <header class="bg-white dark:bg-[#2B2C37] dark:text-white w-screen h-20 md:h-24.25 shadow-xl border-[#828FA3] flex items-center pl-4">
-          
-          <div class="flex md:justify-start md:flex">
-
-            <span class="col-span-1 md:hidden w-9 h-9 bg-no-repeat bg-contain" style="background-image: url('assets/favicon.svg');" alt="Mobile Logo"></span>
-
-            <h2 class="col-span-2 text-2xl font-bold mt-1 ml-3 md:ml-5">Launch Career</h2>
-
-          </div>
-
-          <div class="absolute right-0  md:justify-end md:items-center md:mr-5">
-
-            <button onclick="openAddTaskModal()" class="cursor-pointer hidden md:flex bg-[#635FC7] text-white p-2 rounded-2xl w-full"> + Add New Task </button>
-
-            <button onclick="openAddTaskModal()" class="cursor-pointer flex md:hidden bg-[#635FC7] text-white text-3xl items-center justify-center w-9 h-9 pb-2 rounded-2xl mr-3"> + </button>
-
-          </div>
-
-        </header>
-
-        <div class="bg-[#F4F7FD] dark:bg-[#20212C] w-full h-full">
-
-          <main class="pl-4 pt-5 pr-4 w-screen md:pr-40 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7">
-
-            <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
-
-            <div>
-
-              <div class="flex items-center mb-5">
-
-                <span class="bg-[#49C4E5] rounded-full w-3 h-3"></span>
-                <h4 class="text-sm md:text-md text-[#828FA3] ml-3">TODO (4)</h4>
-
-              </div>
-
-              <!-- Tasks container for TODO -->
-
-              <div id="todo-column"></div>
-
-            </div>
-
-            <!-- DOING Column -->
-
-            <div>
-
-              <div class="flex items-center mb-5">
-
-                <span class="bg-[#8471F2] rounded-full w-3 h-3"></span>
-                <h4 class="text-sm md:text-md text-[#828FA3] ml-3">DOING (2)</h4>
-
-              </div>
-
-              <!-- Tasks container for DOING -->
-
-              <div id="doing-column"></div>
-
-            </div>
-            <!-- DONE Column -->
-            <div>
-
-              <div class="flex items-center mb-5">
-                <span class="bg-[#67E2AE] rounded-full w-3 h-3"></span>
-                <h4 class="text-sm md:text-md text-[#828FA3] ml-3">DONE (3)</h4>
-              </div>
-
-              <!-- Tasks container for DONE -->
-
-              <div id="done-column"></div>
-
-            </div>
-
-            <!-- Edit Task Modal -->
-              <dialog id="task-modal">
-
-                <form method="dialog" id="task-form">
-                  <button onclick="closeModal()"  class="close-modal">&times;</button>
-                  <div class="modal-header">
-                    <h3>Edit Task</h3>
-                  </div>
-                            
-                  <label for="task-title">Title</label>
-                  <input type="text" id="task-title" name="title" required />
-          
-                  <label for="task-desc">Description</label>
-                  <textarea id="task-desc" name="description" rows="4"></textarea>
-          
-                  <label for="task-status">Status</label>
-                  <select id="task-status" name="status" required>
-                    <option value="todo">todo</option>
-                    <option value="doing">doing</option>
-                    <option value="done">done</option>
-                  </select>
-                  <div class="block">
-                    <button onclick="saveTask()"  class="bg-[#635FC7] cursor-pointer text-white my-2 px-4 py-2 rounded-lg">Save</button>
-                  </div>
-                </form>
-
-              </dialog>
-              
-              <!-- Add Task Modal -->
-              <dialog id="add-task-modal">
-                <form method="dialog" id="add-task-form">
-                  <button type="button" id="close-add-modal-btn" class="close-modal">&times;</button>
-                  <div class="modal-header">
-                    <h3>Add New Task</h3>
-                  </div>
-
-                  <label for="new-task-title">Title</label>
-                  <input type="text" id="new-task-title" name="title" required />
-
-                  <label for="new-task-desc">Description</label>
-                  <textarea id="new-task-desc" name="description" rows="4" placeholder="e.g Pet your dog, have a cup of coffee, dance to your favourite song and come back to crush this challenge. "></textarea>
-
-                  <label for="new-task-status">Status</label>
-                  <select id="new-task-status" name="status" required>
-                    <option value="todo">To Do</option>
-                    <option value="doing">Doing</option>
-                    <option value="done">Done</option>
-                  </select>
-                  <div class="items-center">
-                    <button type="button" id="save-new-task-btn" class="save-modal">Create Task</button>
-                  </div>
-                </form>
-              </dialog>
-
-          </main>
-
-        </div>
+        <h4 class=" text-[#828FA3] text-md ml-7 py-3.5">ALL BOARDS (1)</h4>
+        <button class="bg-[#635FC7] text-white text-md hover:bg-[#A8A4FF] hover:text- font-semibold w-69 h-11 py-2 pr-15 rounded-r-3xl">Launch Career</button>
 
       </div>
 
-      <script src="scripts/taskManager.js" type="module" defer></script>  
-      <script src="scripts/taskModals.js" type="module" defer></script>   
-      <script src="scripts/taskUI.js" type="module" defer></script>      
-      <script src="scripts/task-input.js" type="module" defer></script>   
-      <script src="scripts/storage.js" type="module" defer></script>
-      <script src="scripts/API-tasks.js" type="module" defer></script>
+      <div class="sidebar-footer">
+
+        <div class="theme-btn">
+
+          <span class="theme-icon">☀️</span>
+          <div class="outer-btn">
+
+            <div class="inner-btn">
+
+          </div>
+          <span class="theme-icon">🌑</span>
+
+        </div>
+        
+        <div class="hide-sidebar">
+          <button><span>🚫</span>Hide Sidebar</button>
+        </div>
+        
+      </div>
+      
+    </nav>
+
+    <!-- Main Layout: Header with board title, add task button, and main content area for task columns. -->
+    <div>
+      
+      <header class="bg-white dark:bg-[#2B2C37] dark:text-white w-screen h-20 md:h-24.25 shadow-xl border-[#828FA3] flex items-center pl-4">
+        
+        <div class="flex md:justify-start md:flex">
+
+          <span class="col-span-1 md:hidden w-9 h-9 bg-no-repeat bg-contain" style="background-image: url('assets/favicon.svg');" alt="Mobile Logo"></span>
+
+          <h2 class="col-span-2 text-2xl font-bold mt-1 ml-3 md:ml-5">Launch Career</h2>
+
+        </div>
+
+        <div class="absolute right-0  md:justify-end md:items-center md:mr-5">
+
+          <button onclick="openAddTaskModal()" class="cursor-pointer hidden md:flex bg-[#635FC7] text-white p-2 rounded-2xl w-full"> + Add New Task </button>
+
+          <button onclick="openAddTaskModal()" class="cursor-pointer flex md:hidden bg-[#635FC7] text-white text-3xl items-center justify-center w-9 h-9 pb-2 rounded-2xl mr-3"> + </button>
+
+        </div>
+
+      </header>
+
+      
+
+      <div class="bg-[#F4F7FD] dark:bg-[#20212C] w-full h-full">
+
+        <main class="pl-4 pt-5 pr-4 w-screen md:pr-40 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-7">
+          <div id="loading-screen" style="display: none;">Loading...</div>
+          <!-- Task Columns: Display tasks grouped by status (TODO, DOING, DONE). -->
+
+          <div>
+
+            <div class="flex items-center mb-5">
+
+              <span class="bg-[#49C4E5] rounded-full w-3 h-3"></span>
+              <h4 class="text-sm md:text-md text-[#828FA3] ml-3">TODO (4)</h4>
+
+            </div>
+
+            <!-- Tasks container for TODO -->
+
+            <div id="todo-column"></div>
+
+          </div>
+
+          <!-- DOING Column -->
+
+          <div>
+
+            <div class="flex items-center mb-5">
+
+              <span class="bg-[#8471F2] rounded-full w-3 h-3"></span>
+              <h4 class="text-sm md:text-md text-[#828FA3] ml-3">DOING (2)</h4>
+
+            </div>
+
+            <!-- Tasks container for DOING -->
+
+            <div id="doing-column"></div>
+
+          </div>
+          <!-- DONE Column -->
+          <div>
+
+            <div class="flex items-center mb-5">
+              <span class="bg-[#67E2AE] rounded-full w-3 h-3"></span>
+              <h4 class="text-sm md:text-md text-[#828FA3] ml-3">DONE (3)</h4>
+            </div>
+
+            <!-- Tasks container for DONE -->
+
+            <div id="done-column"></div>
+
+          </div>
+
+          <!-- Edit Task Modal -->
+            <dialog id="task-modal">
+
+              <form method="dialog" id="task-form">
+                <button onclick="closeModal()"  class="close-modal">&times;</button>
+                <div class="modal-header">
+                  <h3>Edit Task</h3>
+                </div>
+                          
+                <label for="task-title">Title</label>
+                <input type="text" id="task-title" name="title" required />
+        
+                <label for="task-desc">Description</label>
+                <textarea id="task-desc" name="description" rows="4"></textarea>
+        
+                <label for="task-status">Status</label>
+                <select id="task-status" name="status" required>
+                  <option value="todo">todo</option>
+                  <option value="doing">doing</option>
+                  <option value="done">done</option>
+                </select>
+
+                <label for="task-priority">Priority</label>
+                <select id="task-priority" name="status" required>
+                  <option value="low">low</option>
+                  <option value="medium">medium</option>
+                  <option value="high">high</option>
+                </select>
+
+                <div class="block">
+                  <button id="save-new-task-btn" class="save-modal" >Save Changes</button>
+                  <button id="deleteTaskBtn" class="delete-modal" >Delete Task</button>
+                </div>
+              </form>
+
+            </dialog>
+            
+            <!-- Add Task Modal -->
+            <dialog id="add-task-modal">
+              <form method="dialog" id="add-task-form">
+                <button type="button" id="close-add-modal-btn" class="close-modal">&times;</button>
+                <div class="modal-header">
+                  <h3>Add New Task</h3>
+                </div>
+
+                <label for="new-task-title">Title</label>
+                <input type="text" id="new-task-title" name="title" required />
+
+                <label for="new-task-desc">Description</label>
+                <textarea id="new-task-desc" name="description" rows="4" placeholder="e.g Pet your dog, have a cup of coffee, dance to your favourite song and come back to crush this challenge. "></textarea>
+
+                <label for="new-task-status">Status</label>
+                <select id="new-task-status" name="status" required>
+                  <option value="todo">To Do</option>
+                  <option value="doing">Doing</option>
+                  <option value="done">Done</option>
+                </select>
+
+                <label for="task-priority">Priority</label>
+                <select id="task-priority" name="status" required>
+                  <option value="low">low</option>
+                  <option value="medium">medium</option>
+                  <option value="high">high</option>
+                </select>
+
+                <div class="items-center">
+                  <button type="button" id="save-new-task-btn" class="save-modal">Create Task</button>
+                </div>
+              </form>
+            </dialog>
+
+        </main>
+
+      </div>
+
+    </div>
+
+    <script src="scripts/taskManager.js" type="module" defer></script>  
+    <script src="scripts/taskUI.js" type="module" defer></script>
+    <script src="scripts/taskModals.js" type="module" defer></script>   
+          
+    <script src="scripts/task-input.js" type="module" defer></script>   
+    <script src="scripts/storage.js" type="module" defer></script>
+    <script src="scripts/API-tasks.js" type="module" defer></script>
+    <script src="scripts/storage.js" type="module" defer></script>
+
 
   </body>
 </html>
