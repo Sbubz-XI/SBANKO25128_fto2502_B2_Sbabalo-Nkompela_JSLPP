@@ -1,38 +1,39 @@
+import { Tasks } from "./taskManager.js";
 import { openEditTaskModal } from "./taskManager.js";
 
-export function updateTaskUI(tasks) {
-  ["todo-column", "doing-column", "done-column"].forEach((columnId) => {
-    const column = document.getElementById(columnId);
-    if (column) column.innerHTML = "";
-  });
+export function updateTaskUI() {
+  if (!Array.isArray(Tasks)) {
+    console.error("❌ Error: Tasks is not an array or is undefined.");
+    return;
+  }
 
-  tasks.sort((a, b) => {
-    const priorityOrder = { high: 3, medium: 2, low: 1 };
-    return priorityOrder[b.priority] - priorityOrder[a.priority];
-  });
+  // Clear all columns so tasks can be re-rendered
+  document
+    .querySelectorAll(".column")
+    .forEach((column) => (column.innerHTML = ""));
 
-  tasks.forEach((task) => {
+  Tasks.forEach((task) => {
     let taskElement = document.createElement("div");
     taskElement.className =
       "bg-white rounded-lg hover:bg-[#E4EBFA] hover:scale-101 transition-all duration-300 mb-5 py-4 px-4 font-bold shadow-md cursor-pointer";
-    taskElement.innerHTML = `
-      <h2 class="text-lg">${task.title}</h2>
-      <p class="text-md text-gray-800">
-      <span class="priority-indicator" style="background-color: ${getPriorityColor(
-        task.priority
-      )};"></span>
-    `;
+    taskElement.innerHTML = `<h2>${task.title}</h2>`;
+
+    taskElement.addEventListener("click", () => openEditTaskModal(task.id));
 
     let column = document.getElementById(`${task.status}-column`);
     if (column) {
       column.appendChild(taskElement);
-    } else {
-      console.error("Column not found for status:", task.status);
     }
-
-    taskElement.addEventListener("click", () => openEditTaskModal(task.id));
   });
 }
+
+document.getElementById("deleteTaskBtn").addEventListener("click", () => {
+  const modal = document.getElementById("task-modal");
+  const taskId = parseInt(modal.dataset.taskId, 10);
+
+  deleteTask(taskId); // Calls function to delete the task
+  closeModal("task-modal"); // Close modal after deletion
+});
 
 const themeButton = document.querySelector(".theme-btn");
 if (themeButton) {
@@ -49,10 +50,11 @@ if (themeButton) {
   }
 }
 
-function getPriorityColor(priority) {
-  return priority === "high"
-    ? "red"
-    : priority === "medium"
-    ? "orange"
-    : "green";
+function hideSidebar() {
+  const sidebar = document.querySelector("nav");
+  if (sidebar) {
+    sidebar.style.display = "none"; // Hides the sidebar
+  } else {
+    console.error("Sidebar not found!");
+  }
 }

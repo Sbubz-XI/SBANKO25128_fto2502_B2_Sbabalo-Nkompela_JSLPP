@@ -205,3 +205,15 @@ form select {
   background-size: 1.4rem;
   padding-right: 1rem;
 }
+
+.modal-nav {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  padding: 24px;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}

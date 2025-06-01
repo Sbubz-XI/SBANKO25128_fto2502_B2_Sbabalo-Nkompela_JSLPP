@@ -3,5 +3,11 @@ export function saveTasksToLocalStorage(tasks) {
 }
 
 export function loadTasksFromLocalStorage() {
-  return JSON.parse(localStorage.getItem("kanbanTasks")) || [];
+  const storedTasks = localStorage.getItem("kanbanTasks");
+  try {
+    return storedTasks ? JSON.parse(storedTasks) : [];
+  } catch (error) {
+    console.error("Error parsing tasks from localStorage:", error);
+    return [];
+  }
 }

@@ -5,67 +5,120 @@ import {
 import { updateTaskUI } from "./taskUI.js";
 import { closeModal } from "./taskModals.js";
 
-let tasks = loadTasksFromLocalStorage();
+export let Tasks = loadTasksFromLocalStorage();
+
 let currentTaskId =
-  tasks.length > 0 ? Math.max(...tasks.map((task) => task.id), 0) + 1 : 1;
+  Tasks.length > 0 ? Math.max(...Tasks.map((task) => task.id)) + 1 : 1;
+
+function generateUniqueId() {
+  return Date.now() + Math.floor(Math.random() * 1000);
+}
+
+export async function fetchTasksFromAPI() {
+  try {
+    const response = await fetch("https://jsl-kanban-api.vercel.app/");
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    const apiTasks = await response.json();
+    console.log("✅ Fetched API Tasks:", apiTasks);
+
+    // Assign unique IDs and default priority
+    apiTasks.forEach((task) => {
+      task.id = task.id || generateUniqueId();
+      task.priority = task.priority || "medium";
+    });
+
+    // Merge fetched tasks with stored tasks
+    const storedTasks = loadTasksFromLocalStorage();
+    const mergedTasks = [...storedTasks, ...apiTasks];
+
+    // Update global Tasks and persist them
+    Tasks.splice(0, Tasks.length, ...mergedTasks);
+    saveTasksToLocalStorage(Tasks);
+    updateTaskUI();
+    return Tasks;
+  } catch (error) {
+    console.error("❌ Error fetching tasks from API:", error);
+    return loadTasksFromLocalStorage();
+  }
+}
 
 export function saveNewTask() {
   let title = document.getElementById("new-task-title").value.trim();
   let description = document.getElementById("new-task-desc").value.trim();
   let status = document.getElementById("new-task-status").value;
-  let priority = document.getElementById("task-priority").value;
 
   if (!title || !description) {
     alert("Please enter both title and description.");
     return;
   }
 
-  let task = { id: currentTaskId++, title, description, status, priority };
-  tasks.push(task);
-  saveTasksToLocalStorage(tasks);
-  updateTaskUI(tasks);
+  let newTask = {
+    id: generateUniqueId(),
+    title,
+    description,
+    status,
+    priority: "medium",
+  };
+  Tasks.push(newTask);
+  saveTasksToLocalStorage(Tasks);
+  updateTaskUI();
   closeModal("add-task-modal");
 }
 
+// Function to open the Edit Task Modal
 export function openEditTaskModal(taskId) {
   const modal = document.getElementById("task-modal");
   if (!modal) return;
 
-  const task = tasks.find((t) => t.id === taskId);
+  const task = Tasks.find((t) => t.id === taskId);
   if (!task) return;
 
   document.getElementById("task-title").value = task.title;
   document.getElementById("task-desc").value = task.description;
   document.getElementById("task-status").value = task.status;
-  document.getElementById("task-priority").value = task.priority; // ✅ Added Priority
 
-  modal.dataset.taskId = taskId;
+  modal.dataset.taskId = taskId; // ✅ Store task ID for reference when saving
   modal.showModal();
 }
 
 export function saveTask() {
   const modal = document.getElementById("task-modal");
+  if (!modal) return;
+
   const taskId = parseInt(modal.dataset.taskId, 10);
+  let task = Tasks.find((t) => t.id === taskId);
+  if (!task) {
+    console.error(`❌ Error: Task with ID ${taskId} not found.`);
+    return;
+  }
 
-  let task = tasks.find((t) => t.id === taskId);
-  if (!task) return;
+  let titleInput = document.getElementById("task-title").value.trim();
+  let descInput = document.getElementById("task-desc").value.trim();
+  let statusInput = document.getElementById("task-status").value;
 
-  task.title = document.getElementById("task-title").value.trim();
-  task.description = document.getElementById("task-desc").value.trim();
-  task.status = document.getElementById("task-status").value;
-  task.priority = document.getElementById("task-priority").value;
+  task.title = titleInput;
+  task.description = descInput;
+  task.status = statusInput;
 
-  saveTasksToLocalStorage(tasks);
-  updateTaskUI(tasks);
+  saveTasksToLocalStorage(Tasks);
+  updateTaskUI(); // ✅ Moves task to selected column
   closeModal("task-modal");
 }
-
 window.saveTask = saveTask;
 
 export function deleteTask(taskId) {
-  tasks = tasks.filter((task) => task.id !== taskId);
-  saveTasksToLocalStorage(tasks);
-  updateTaskUI(tasks);
-}
+  const taskIndex = Tasks.findIndex((task) => task.id === taskId);
 
-window.saveTask = saveTask;
+  if (taskIndex !== -1) {
+    // Use `slice()` to create a new array without the deleted task
+    Tasks = [...Tasks.slice(0, taskIndex), ...Tasks.slice(taskIndex + 1)];
+
+    // Update LocalStorage to persist the change
+    saveTasksToLocalStorage(Tasks);
+
+    // Remove task from UI
+    updateTaskUI();
+  } else {
+    console.error(`❌ Task with ID ${taskId} not found.`);
+  }
+}

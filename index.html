@@ -19,33 +19,34 @@
  
     <nav class="hidden md:block relative bg-white dark:bg-[#2B2C37] shadow-xl border-[#828FA3] pr-4 h-screen w-75 md:w-75">
       
-      <div class="hidden md:block w-45 h-20  bg-no-repeat bg-center bg-contain mx-3.5 my-2.5 " style="background-image: url('assets/logo-light.svg');" alt="Main Logo">
+      <i class="hidden md:block w-45 h-20  bg-no-repeat bg-center bg-contain mx-3.5 my-2.5 " style="background-image: url('assets/logo-light.svg');" alt="Main Logo">
+      </i>
+
+      <div onclick="toggleNavModal()" class="block md:hidden W-auto h-auto bg-no-repeat bg-center bg-contain" style="background-image: url('assets/favicon.svg');" alt="Mobile Logo"></div>
       </div>
+      
+      <h4 class=" text-[#828FA3] text-md ml-7 py-3.5">ALL BOARDS (1)</h4>
+      <button class="bg-[#635FC7] text-white text-md hover:bg-[#A8A4FF] hover:text- font-semibold w-69 h-11 py-2 pr-15 rounded-r-3xl">Launch Career</button>
 
-      <div class="block md:hidden W-auto h-auto bg-no-repeat bg-center bg-contain" style="background-image: url('assets/favicon.svg');" alt="Mobile Logo"></div>
-
-        <h4 class=" text-[#828FA3] text-md ml-7 py-3.5">ALL BOARDS (1)</h4>
-        <button class="bg-[#635FC7] text-white text-md hover:bg-[#A8A4FF] hover:text- font-semibold w-69 h-11 py-2 pr-15 rounded-r-3xl">Launch Career</button>
-
-      </div>
+      
 
       <div class="sidebar-footer">
 
         <div class="theme-btn">
 
-          <span class="theme-icon">☀️</span>
+          <div class="theme-icon">☀️</div>
+
           <div class="outer-btn">
 
-            <div class="inner-btn">
+            <div class="inner-btn" onclick="toggleDarkMode()">
 
           </div>
-          <span class="theme-icon">🌑</span>
+
+          <div class="theme-icon">🌑</div>
 
         </div>
-        
-        <div class="hide-sidebar">
-          <button><span>🚫</span>Hide Sidebar</button>
-        </div>
+
+        <div class="hide-sidebar" onclick="hideSidebar()"><span>🚫</span>Hide Sidebar</div>
         
       </div>
       
@@ -131,7 +132,7 @@
             <dialog id="task-modal">
 
               <form method="dialog" id="task-form">
-                <button onclick="closeModal()"  class="close-modal">&times;</button>
+                <button onclick="closeModal('task-modal')" type="button"  class="close-modal">&times;</button>
                 <div class="modal-header">
                   <h3>Edit Task</h3>
                 </div>
@@ -147,13 +148,6 @@
                   <option value="todo">todo</option>
                   <option value="doing">doing</option>
                   <option value="done">done</option>
-                </select>
-
-                <label for="task-priority">Priority</label>
-                <select id="task-priority" name="status" required>
-                  <option value="low">low</option>
-                  <option value="medium">medium</option>
-                  <option value="high">high</option>
                 </select>
 
                 <div class="block">
@@ -185,18 +179,39 @@
                   <option value="done">Done</option>
                 </select>
 
-                <label for="task-priority">Priority</label>
-                <select id="task-priority" name="status" required>
-                  <option value="low">low</option>
-                  <option value="medium">medium</option>
-                  <option value="high">high</option>
-                </select>
-
                 <div class="items-center">
-                  <button type="button" id="save-new-task-btn" class="save-modal">Create Task</button>
+                  <button onclick="saveNewTask()" type="button" id="save-new-task-btn" class="save-modal">Create Task</button>
                 </div>
               </form>
             </dialog>
+
+            <!-- Mini Modal for Navigation -->
+            <dialog id="nav-modal">
+              <nav class="modal-nav">
+
+                <button onclick="closeModal('nav-modal')" class="text-red-600 text-2xl">&times;</button>
+                <label class=" text-[#828FA3] text-md ml-7 py-3.5">ALL BOARDS (1)</label>
+                <ul>
+                  <li>Launch Career</li>
+                </ul>
+
+                <div class="theme-btn">
+
+                  <div class="theme-icon">☀️</div>
+        
+                  <div class="outer-btn">
+        
+                    <div class="inner-btn" onclick="toggleDarkMode()">
+        
+                  </div>
+        
+                  <div class="theme-icon">🌑</div>
+        
+                </div>
+                
+              </nav>
+            </dialog>
+
 
         </main>
 
@@ -206,13 +221,12 @@
 
     <script src="scripts/taskManager.js" type="module" defer></script>  
     <script src="scripts/taskUI.js" type="module" defer></script>
-    <script src="scripts/taskModals.js" type="module" defer></script>   
-          
     <script src="scripts/task-input.js" type="module" defer></script>   
     <script src="scripts/storage.js" type="module" defer></script>
     <script src="scripts/API-tasks.js" type="module" defer></script>
     <script src="scripts/storage.js" type="module" defer></script>
-
+    <script src="scripts/taskModals.js" type="module" defer></script>   
+    
 
   </body>
 </html>

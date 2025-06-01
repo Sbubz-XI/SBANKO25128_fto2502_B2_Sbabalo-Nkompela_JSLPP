@@ -4,5 +4,10 @@ export function saveTasksToLocalStorage(tasks) {
 
 export function loadTasksFromLocalStorage() {
   const storedTasks = localStorage.getItem("kanbanTasks");
-  return storedTasks ? JSON.parse(storedTasks) : [];
+  try {
+    return storedTasks ? JSON.parse(storedTasks) : [];
+  } catch (error) {
+    console.error("Error parsing tasks from localStorage:", error);
+    return [];
+  }
 }
