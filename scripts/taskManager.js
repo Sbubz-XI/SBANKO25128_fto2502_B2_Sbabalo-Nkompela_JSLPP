@@ -57,7 +57,6 @@ export function saveNewTask() {
     title,
     description,
     status,
-    priority: "medium",
   };
   Tasks.push(newTask);
   saveTasksToLocalStorage(Tasks);
@@ -77,7 +76,7 @@ export function openEditTaskModal(taskId) {
   document.getElementById("task-desc").value = task.description;
   document.getElementById("task-status").value = task.status;
 
-  modal.dataset.taskId = taskId; // ✅ Store task ID for reference when saving
+  modal.dataset.taskId = taskId;
   modal.showModal();
 }
 
@@ -101,7 +100,7 @@ export function saveTask() {
   task.status = statusInput;
 
   saveTasksToLocalStorage(Tasks);
-  updateTaskUI(); // ✅ Moves task to selected column
+  updateTaskUI();
   closeModal("task-modal");
 }
 window.saveTask = saveTask;
@@ -110,13 +109,11 @@ export function deleteTask(taskId) {
   const taskIndex = Tasks.findIndex((task) => task.id === taskId);
 
   if (taskIndex !== -1) {
-    // Use `slice()` to create a new array without the deleted task
     Tasks = [...Tasks.slice(0, taskIndex), ...Tasks.slice(taskIndex + 1)];
 
     // Update LocalStorage to persist the change
     saveTasksToLocalStorage(Tasks);
 
-    // Remove task from UI
     updateTaskUI();
   } else {
     console.error(`❌ Task with ID ${taskId} not found.`);

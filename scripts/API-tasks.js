@@ -10,10 +10,10 @@ function generateUniqueId() {
 
 export async function fetchTasks() {
   const loadingScreen = document.getElementById("loading-screen");
-  if (loadingScreen) loadingScreen.style.display = "block"; // Show loader
+  // Show loader
+  if (loadingScreen) loadingScreen.style.display = "block";
 
   try {
-    // Use helper to load tasks from local storage
     let storedTasks = loadTasksFromLocalStorage();
     if (storedTasks.length > 0) {
       console.log("✅ Loaded tasks from local storage:", storedTasks);
@@ -26,10 +26,8 @@ export async function fetchTasks() {
     const apiTasks = await response.json();
     console.log("✅ Fetched API tasks:", apiTasks);
 
-    // Enrich tasks with unique id and default priority
     apiTasks.forEach((task) => {
       task.id = task.id || generateUniqueId();
-      task.priority = task.priority || "medium";
     });
 
     saveTasksToLocalStorage(apiTasks);

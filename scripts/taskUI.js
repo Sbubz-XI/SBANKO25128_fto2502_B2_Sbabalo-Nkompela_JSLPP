@@ -31,8 +31,8 @@ document.getElementById("deleteTaskBtn").addEventListener("click", () => {
   const modal = document.getElementById("task-modal");
   const taskId = parseInt(modal.dataset.taskId, 10);
 
-  deleteTask(taskId); // Calls function to delete the task
-  closeModal("task-modal"); // Close modal after deletion
+  deleteTask(taskId);
+  closeModal("task-modal");
 });
 
 const themeButton = document.querySelector(".theme-btn");
@@ -53,7 +53,7 @@ if (themeButton) {
 function hideSidebar() {
   const sidebar = document.querySelector("nav");
   if (sidebar) {
-    sidebar.style.display = "none"; // Hides the sidebar
+    sidebar.style.display = "none";
   } else {
     console.error("Sidebar not found!");
   }

@@ -28,13 +28,10 @@ window.saveTask = saveTask;
 window.toggleNavModal = toggleNavModal;
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize global Tasks from local storage (if any)
   const storedTasks = loadTasksFromLocalStorage();
   if (storedTasks.length > 0) {
-    // Update the global Tasks array (clearing and splicing preserves references)
     Tasks.splice(0, Tasks.length, ...storedTasks);
   } else {
-    // If no tasks available, fetch from API
     fetchTasksFromAPI().then(() => {
       updateTaskUI();
     });
