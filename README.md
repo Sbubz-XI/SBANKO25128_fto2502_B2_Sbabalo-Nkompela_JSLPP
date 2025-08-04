@@ -24,8 +24,8 @@ This project was built as part of the **JSL Portfolio Submission**, focusing on 
 
 ## 🚀 Deployment Link
 
-🔗 **Live Project:** [https://sbanko25128-fto2504-b2-jslpp.netlify.app/](#)  
-🔗 **Project Presentation Recording:** [[Insert your video recording link here](https://www.veed.io/view/b95c8a5d-ce24-437e-b418-f801efb08a35?panel=share)](#)
+🔗 **Live Project:** [https://sbanko25128-fto2504-b2-jslpp.netlify.app/]
+🔗 **Project Presentation Recording:** [(https://www.veed.io/view/b95c8a5d-ce24-437e-b418-f801efb08a35?panel=share)]
 
 ---
 
