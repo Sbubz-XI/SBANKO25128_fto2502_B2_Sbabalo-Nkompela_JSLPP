@@ -1,0 +1,219 @@
+/* Remove default dialog styles */
+dialog {
+  position: fixed;
+
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+
+/* Style the modal box */
+#task-modal::backdrop {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#task-modal {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  padding: 24px;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /*font-family: "Plus Jakarta Sans", sans-serif;*/
+}
+
+/* Header */
+.close-modal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  line-height: 0.5;
+  cursor: pointer;
+  color: #ea5555;
+  transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+  transition-delay: 0.1s; /* Delay before scaling */
+}
+
+.save-modal {
+  justify-content: center;
+  color: white;
+  background-color: #635fc7;
+  border-radius: 20px;
+  margin-top: 1rem;
+  width: 40%;
+  height: 2.5rem;
+}
+
+.delete-modal {
+  justify-content: center;
+  color: white;
+  background-color: #ea5555;
+  border-radius: 20px;
+  margin-top: 1rem;
+  width: 40%;
+  height: 2.5rem;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #ea5555;
+  transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+  transition-delay: 0.1s; /* Delay before scaling */
+}
+
+.close-btn:hover {
+  transform: scale(1.15);
+  font-weight: 600;
+}
+
+.close-btn:focus {
+  outline: none;
+}
+
+/* Form elements */
+form label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.75em;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  color: #828fa3;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #828fa3;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.8125em;
+  resize: vertical;
+}
+
+form select {
+  appearance: none; /* Remove native arrow */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23828FA3" stroke-width="3" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>')
+    no-repeat right 0.75rem center;
+
+  background-size: 1.4rem;
+  padding-right: 1rem;
+}
+
+/* Style the Add Task modal box */
+#add-task-modal::backdrop {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#add-task-modal {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  padding: 24px;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+/* Close button */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #ea5555;
+  transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+  transition-delay: 0.1s; /* Delay before scaling */
+}
+
+.close-btn:hover {
+  transform: scale(1.15);
+  font-weight: 600;
+}
+
+.close-btn:focus {
+  outline: none;
+}
+
+/* Form elements */
+form label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.75em;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  color: #828fa3;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #828fa3;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.8125em;
+  resize: vertical;
+}
+
+form select {
+  appearance: none; /* Remove native arrow */
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23828FA3" stroke-width="3" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>')
+    no-repeat right 0.75rem center;
+
+  background-size: 1.4rem;
+  padding-right: 1rem;
+}
+
+.modal-nav {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  padding: 24px;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}

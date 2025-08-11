@@ -1,0 +1,42 @@
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 300px;
+  height: 70vh;
+}
+
+.theme-btn {
+  display: flex;
+  background-color: #f4f7fd;
+  height: 40px;
+  width: 240px;
+  border-radius: 6px;
+  justify-content: center;
+}
+
+.outer-btn {
+  background-color: #635fc7;
+  padding: 7px;
+  height: 38px;
+  width: 60px;
+  border-radius: 30px;
+}
+
+.inner-btn {
+  background-color: white;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  transition: all 0.5 s ease-in-out;
+}
+
+.hide-sidebar {
+  background-color: #f4f7fd;
+  color: #635fc7;
+  height: 48px;
+  width: 251px;
+  border-radius: 6px;
+  align-items: center;
+  font-size: larger;
+}

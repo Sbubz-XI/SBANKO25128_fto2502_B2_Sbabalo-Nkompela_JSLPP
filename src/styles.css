@@ -1,0 +1,16 @@
+/* General body styling */
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  display: flex;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+#dark1 {
+  background-color: #2b2c37;
+  color: white;
+}
+
+#dark2 {
+  background-color: #20212c;
+}
