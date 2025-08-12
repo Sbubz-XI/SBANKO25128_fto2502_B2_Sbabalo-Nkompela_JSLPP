@@ -118,13 +118,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Hide sidebar button
-  const hideSidebarBtn = document.getElementById('hide-sidebar-btn');
-  if (hideSidebarBtn) {
-    hideSidebarBtn.addEventListener('click', () => {
-      const sidebar = document.querySelector('nav');
-      if (sidebar) {
-        sidebar.style.display = 'none';
-      }
+  const hideSidebarBtn = document.getElementById("hide-sidebar-btn");
+  const revealSidebarBtn = document.getElementById("reveal-sidebar-btn");
+
+  if (hideSidebarBtn && revealSidebarBtn) {
+    hideSidebarBtn.addEventListener("click", () => {
+      hideSidebar();
+      hideSidebarBtn.style.display = "none";
+      revealSidebarBtn.style.display = "block";
+    });
+
+    revealSidebarBtn.addEventListener("click", () => {
+      revealSidebar();
+      hideSidebarBtn.style.display = "block";
+      revealSidebarBtn.style.display = "none";
     });
   }
 });

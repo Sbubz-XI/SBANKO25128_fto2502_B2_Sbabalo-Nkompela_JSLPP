@@ -54,3 +54,20 @@
   cursor: pointer;
   background-color: #635FC740;
 }
+
+.reveal-sidebar {
+  font-size: x-large;
+  display: flex;
+  justify-content: center;
+  padding: 7px;
+  background-color: #A8A4FF;
+  height: 48px;
+  width: 56px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.reveal-sidebar:hover {
+  cursor: pointer;
+  background-color: #635fc7;
+}

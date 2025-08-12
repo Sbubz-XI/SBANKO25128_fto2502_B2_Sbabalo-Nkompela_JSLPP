@@ -67,6 +67,12 @@ function hideSidebar() {
   sidebar.style.display = "none";
 }
 
+function revealSidebar() {
+  const sidebar = document.querySelector("nav");
+  if (!sidebar) return console.error("Sidebar not found!");
+  sidebar.style.display = "block";
+}
+
 function setupEventListeners() {
   document.querySelectorAll("[onclick='openAddTaskModal()']").forEach(btn => btn.addEventListener("click", openAddTaskModal));
 
@@ -131,4 +137,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupEventListeners();
 });
 
-export { hideSidebar };
+export { hideSidebar, revealSidebar };
