@@ -41,7 +41,16 @@
   color: #635fc7;
   height: 48px;
   width: 251px;
-  border-radius: 6px;
-  align-items: center;
+  padding: 10px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  justify-content: center;
   font-size: larger;
+  font-weight: 700;
+}
+
+.hide-sidebar:hover {
+  cursor: pointer;
+  background-color: #635FC740;
 }
