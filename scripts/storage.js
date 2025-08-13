@@ -1,6 +1,10 @@
 // storage.js
 export function saveTasksToLocalStorage(tasks) {
-  localStorage.setItem("kanbanTasks", JSON.stringify(tasks));
+  try {
+    localStorage.setItem("kanbanTasks", JSON.stringify(tasks));
+  } catch (error) {
+    console.error("Error saving tasks to Loacal Storage:", error)
+  }
 }
 
 export function loadTasksFromLocalStorage() {
@@ -8,7 +12,7 @@ export function loadTasksFromLocalStorage() {
   try {
     return storedTasks ? JSON.parse(storedTasks) : [];
   } catch (error) {
-    console.error("Error parsing tasks from localStorage:", error);
+    console.error("Error loading tasks from local Storage:", error);
     return [];
   }
 }
