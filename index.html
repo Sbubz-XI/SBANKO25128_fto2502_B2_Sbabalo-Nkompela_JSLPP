@@ -71,6 +71,7 @@
             style="background-image: url('assets/favicon.svg')"
             id="mobile-logo"
             alt="Mobile Logo"
+            onclick="openNavModal()"
           ></span>
 
           <h2 class="col-span-2 text-2xl font-bold mt-1 ml-3 md:ml-5">
@@ -126,7 +127,7 @@
           <div id="reveal-sidebar-btn" class="reveal-sidebar">👀</div>
 
           <!-- Edit Task Modal -->
-          <dialog id="task-modal" class="dark:bg-[#2B2C37]">
+          <dialog id="task-modal" class="bg-white dark:bg-[#2B2C37] text-black dark:text-white">
             <form method="dialog" id="task-form">
               <button type="button" class="close-modal">&times;</button>
               <div class="modal-header">
@@ -134,19 +135,19 @@
               </div>
 
               <label for="task-title">Title</label>
-              <input type="text" id="task-title" name="title" required />
+              <input class="input-styles" type="text" id="task-title" name="title" required />
 
               <label for="task-desc">Description</label>
-              <textarea id="task-desc" name="description" rows="4"></textarea>
+              <textarea class="input-styles" id="task-desc" name="description" rows="4"></textarea>
 
               <label for="task-status">Status</label>
-              <select id="task-status" name="status" required>
+              <select class="input-styles" id="task-status" name="status" required>
                 <option value="todo">todo</option>
                 <option value="doing">doing</option>
                 <option value="done">done</option>
               </select>
 
-              <div class="block">
+              <div class="modal-buttons">
                 <button type="button" id="save-edit-task-btn" class="save-modal">Save Changes</button>
                 <button type="button" id="deleteTaskBtn" class="delete-modal">Delete Task</button>
               </div>
@@ -154,7 +155,7 @@
           </dialog>
 
           <!-- Add Task Modal -->
-          <dialog id="add-task-modal" class="dark:bg-[#2B2C37]" >
+          <dialog id="add-task-modal" class="bg-white dark:bg-[#2B2C37] text-black dark:text-white" >
             <form method="dialog" id="add-task-form">
               <button type="button" id="close-add-modal-btn" class="close-modal">&times;</button>
               <div class="modal-header">
@@ -162,26 +163,26 @@
               </div>
 
               <label for="new-task-title">Title</label>
-              <input type="text" id="new-task-title" name="title" required />
+              <input class="input-styles" type="text" id="new-task-title" name="title" required />
 
               <label for="new-task-desc">Description</label>
-              <textarea id="new-task-desc" name="description" rows="4" placeholder="e.g Pet your dog, have a cup of coffee, dance to your favourite song and come back to crush this challenge. "></textarea>
+              <textarea class="input-styles" id="new-task-desc" name="description" rows="4" placeholder="e.g Pet your dog, have a cup of coffee, dance to your favourite song and come back to crush this challenge. "></textarea>
 
               <label for="new-task-status">Status</label>
-              <select id="new-task-status" name="status" required>
+              <select class="input-styles" id="new-task-status" name="status" required>
                 <option value="todo">To Do</option>
                 <option value="doing">Doing</option>
                 <option value="done">Done</option>
               </select>
 
-              <div class="items-center">
+              <div class="modal-buttons">
                 <button type="button" id="save-new-task-btn" class="save-modal">Create Task</button>
               </div>
             </form>
           </dialog>
 
           <!-- Mini Modal for Navigation -->
-          <div id="nav-modal">
+          <div id="nav-modal" class="md:hidden fixed inset-0 z-50">
 
             <nav class="modal-nav bg-white dark:bg-[#2B2C37]">
               <button id="close-nav-modal-btn" class="close-btn">
@@ -220,6 +221,20 @@
       const template = document.getElementById('theme-button-template');
       const clone = template.content.cloneNode(true);
       document.getElementById('theme-cln-btn').appendChild(clone);
+    </script>
+    <script>
+      const navModal = document.getElementById('nav-modal');
+      const closeBtn = document.getElementById('close-nav-modal-btn');
+
+      function openNavModal() {
+        navModal.classList.add('show');
+        console.log("Mobile logo Clicked - Modal Opened");
+      }
+
+      closeBtn.addEventListener('click', () => {
+        navModal.classList.remove('show');
+        console.log("logo has been pressed")
+      });
     </script>
     <script src="scripts/taskManager.js" type="module" defer></script>
     <script src="scripts/taskUI.js" type="module" defer></script>
