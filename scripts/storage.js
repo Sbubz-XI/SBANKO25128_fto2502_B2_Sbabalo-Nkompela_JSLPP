@@ -9,6 +9,7 @@ export function saveTasksToLocalStorage(tasks) {
     console.error("Error saving tasks to Loacal Storage:", error)
 
   }
+
 }
 
 export function loadTasksFromLocalStorage() {
@@ -20,17 +21,32 @@ export function loadTasksFromLocalStorage() {
 
   } catch (error) {
 
-    console.error("Error loading tasks from local Storage:", error);
-
-    return [];
+    console.error("Error loading tasks from Local Storage:", error);
     
+    return [];
   }
+
 }
 
 export function saveThemeToLocalStorage(theme) {
-  localStorage.setItem("theme", theme);
+  try {
+
+    const storedTasks = localStorage.getItem("kanbanTasks");
+
+    return storedTasks ? JSON.parse(storedTasks) : [];
+
+  } catch (err) {
+
+    console.error("Error loading tasks from local Storage:", error);
+
+    return [];
+
+  }
+
 }
 
 export function loadThemeFromLocalStorage() {
+
   return localStorage.getItem("theme") || "light";
+  
 }

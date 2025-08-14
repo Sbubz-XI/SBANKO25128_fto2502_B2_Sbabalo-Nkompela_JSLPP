@@ -9,7 +9,7 @@ import {
   Tasks,
 } from './taskManager.js';
 
-import { updateTaskUI } from './taskUI.js';
+import { updateTaskUI, hideSidebar, revealSidebar } from './taskUI.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Add New Task buttons (desktop + mobile)
@@ -99,23 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
     closeNavModalBtn.addEventListener('click', () => closeModal('nav-modal'));
   }
 
-  // Dark mode toggle buttons
-  const darkModeToggle = document.getElementById('dark-mode-toggle');
-  const darkModeToggle2 = document.getElementById('dark-mode-toggle-2');
-  function toggleDarkMode() {
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem(
-      'theme',
-      document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-    );
-  }
-  if (darkModeToggle) darkModeToggle.addEventListener('click', toggleDarkMode);
-  if (darkModeToggle2) darkModeToggle2.addEventListener('click', toggleDarkMode);
-
-  // On page load, set theme from localStorage
-  if (localStorage.getItem('theme') === 'dark') {
-    document.documentElement.classList.add('dark');
-  }
 
   // Hide sidebar button
   const hideSidebarBtn = document.getElementById("hide-sidebar-btn");

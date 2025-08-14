@@ -10,6 +10,8 @@ import {
   init,
 } from "./taskManager.js";
 
+
+
 import { loadThemeFromLocalStorage, saveThemeToLocalStorage } from "./storage.js";
 
 function clearTaskColumns() {
@@ -28,7 +30,7 @@ function updateTaskCounts() {
 
 export function updateTaskUI() {
   if (!Array.isArray(Tasks)) {
-    console.error("❌ Tasks data invalid.");
+    console.error("Tasks data invalid.");
     return;
   }
   clearTaskColumns();
@@ -36,7 +38,7 @@ export function updateTaskUI() {
   Tasks.forEach(task => {
     const taskEl = document.createElement("div");
     taskEl.className =
-      "bg-white rounded-lg hover:bg-[#E4EBFA] hover:scale-101 transition-all duration-300 mb-5 py-4 px-4 font-bold shadow-md cursor-pointer";
+      "bg-white dark:bg-[#2B2C37] dark:text-white rounded-lg hover:bg-[#E4EBFA] hover:scale-101 transition-all duration-300 mb-5 py-4 px-4 font-bold shadow-md cursor-pointer";
     taskEl.textContent = task.title;
     taskEl.addEventListener("click", () => openEditTaskModal(task.id));
 
@@ -47,19 +49,6 @@ export function updateTaskUI() {
   updateTaskCounts();
 }
 
-function setupTheme() {
-  const themeBtn = document.querySelector(".theme-btn");
-  if (!themeBtn) return;
-
-  themeBtn.addEventListener("click", () => {
-    const isDark = document.documentElement.classList.toggle("dark");
-    saveThemeToLocalStorage(isDark ? "dark" : "light");
-  });
-
-  if (loadThemeFromLocalStorage() === "dark") {
-    document.documentElement.classList.add("dark");
-  }
-}
 
 function hideSidebar() {
   const sidebar = document.querySelector("nav");
@@ -124,11 +113,11 @@ function setupEventListeners() {
 
   if (navToggle) navToggle.addEventListener("click", () => {
     const navModal = document.getElementById("nav-modal");
-    if (!navModal) return console.error("❌ Navigation modal not found!");
+    if (!navModal) return console.error("Navigation modal not found!");
     navModal.open ? navModal.close() : navModal.showModal();
   });
 
-  setupTheme();
+  setupThemeToggle();
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

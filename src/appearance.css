@@ -8,7 +8,6 @@
 
 .theme-btn {
   display: flex;
-  background-color: #f4f7fd;
   height: 45px;
   width: 240px;
   border-radius: 6px;
@@ -18,15 +17,14 @@
 }
 
 .outer-btn {
-  background-color: #635fc7;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 0px 5px;
   height: 20px;
   width: 40px;
   border-radius: 30px;
   display: flex;
   align-items: center;
   margin: 0px 8px;
+  cursor: pointer;
 }
 
 .inner-btn {
@@ -34,11 +32,17 @@
   border-radius: 50%;
   height: 14px;
   width: 14px;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
+}
+
+.outer-btn.dark-mode .inner-btn  {
+  transform: translateX(20px);
 }
 
 .hide-sidebar {
-  background-color: #f4f7fd;
-  color: #635fc7;
+  /* background-color: #f4f7fd;
+  color: #635fc7; */
   height: 48px;
   width: 278px;
   padding: 10px;
@@ -48,6 +52,7 @@
   justify-content: center;
   font-size: larger;
   font-weight: 700;
+  @apply bg-[#f4f7fd] dark:bg-[#635FC7] text-[#635fc7] dark:text-[#f4f7fd]
 }
 
 .hide-sidebar:hover {
@@ -65,6 +70,7 @@
   width: 56px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  
 }
 
 .reveal-sidebar:hover {
