@@ -207,13 +207,22 @@ form select {
 }
 
 .modal-nav {
-  top: 40%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -40%);
   border-radius: 8px;
-  width: 90%;
-  max-width: 600px;
-  padding: 24px;
-  background-color: #fff;
+  width: 50%;
+  max-width: 330px;
+  padding: 20px 20px 20px 0px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flexbox;
+  justify-content: center;
+  position: relative;
+
+}
+
+#close-nav-modal-btn {
+  position: absolute;
+  top: 0;
+  right: 7%;
 }
