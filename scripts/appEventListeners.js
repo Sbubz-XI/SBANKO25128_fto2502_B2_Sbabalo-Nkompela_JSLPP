@@ -10,8 +10,9 @@ import {
 
 import { updateTaskUI } from './taskUI.js';
 
+// Open Add Task Modal
 document.addEventListener('DOMContentLoaded', () => {
-  // Open Add Task Modal
+  
   document.getElementById('add-task-button')?.addEventListener('click', openAddTaskModal);
   document.getElementById('add-task-button-mobile')?.addEventListener('click', openAddTaskModal);
 
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
       closeModal('add-task-modal');
       updateTaskUI();
 
-      // Clear form
+  
       document.getElementById('new-task-title').value = '';
       document.getElementById('new-task-desc').value = '';
       document.getElementById('new-task-status').value = 'todo';
@@ -35,6 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Close Modals
   document.getElementById('close-add-modal-btn')?.addEventListener('click', () => closeModal('add-task-modal'));
   document.getElementById('close-task-modal-btn')?.addEventListener('click', () => closeModal('task-modal'));
+
+
+
+
 
   // Save Edited Task
   document.getElementById('save-task-btn')?.addEventListener('click', () => {
@@ -50,6 +55,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
+
+
+
+  
   // Delete Task
   document.getElementById('deleteTaskBtn')?.addEventListener('click', () => {
     const modal = document.getElementById('task-modal');

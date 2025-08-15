@@ -98,6 +98,8 @@ export function updateTask(taskId, title, description, status) {
 
 }
 
+// Delete task
+
 export function deleteTask(taskId) {
 
   const index = Tasks.findIndex(t => t.id === taskId);
@@ -145,7 +147,6 @@ export function openEditTaskModal(taskId) {
 export function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) modal.close();
-  // else console.error(`Modal with ID '${modalId}' not found!`);
 }
 
 export async function init() {
