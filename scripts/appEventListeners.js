@@ -66,9 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
   
   // Delete Task
   document.getElementById('deleteTaskBtn')?.addEventListener('click', () => {
