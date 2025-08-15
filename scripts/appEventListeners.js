@@ -42,18 +42,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // Save Edited Task
-  document.getElementById('save-task-btn')?.addEventListener('click', () => {
-    const modal = document.getElementById('task-modal');
-    const taskId = Number(modal.dataset.taskId);
-    const title = document.getElementById('task-title').value.trim();
-    const description = document.getElementById('task-desc').value.trim();
-    const status = document.getElementById('task-status').value;
+  document.getElementById('save-edit-task-btn')?.addEventListener('click', () => {
+  const modal = document.getElementById('task-modal');
+  const taskId = Number(modal?.dataset?.taskId);
 
-    if (updateTask(taskId, title, description, status)) {
-      closeModal('task-modal');
-      updateTaskUI();
-    }
-  });
+  if (isNaN(taskId)) {
+    console.error("Invalid task ID.");
+    return;
+  }
+
+  const title = document.getElementById('task-title')?.value.trim();
+  const description = document.getElementById('task-desc')?.value.trim();
+  const status = document.getElementById('task-status')?.value;
+
+  const isUpdated = updateTask(taskId, title, description, status);
+
+  if (isUpdated) {
+    closeModal('task-modal');
+    updateTaskUI(taskId);
+  } else {
+    alert("Failed to update task. Please check your input.");
+  }
+});
 
 
 
