@@ -69,7 +69,7 @@ export function saveNewTask(title, description, status) {
   Tasks.push(newTask);
 
   saveTasks();
-  console.log("Saved New Task")
+  console.log("Saved New Task:")
   return true;
 
 }
@@ -145,7 +145,7 @@ export function openEditTaskModal(taskId) {
 export function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) modal.close();
-  else console.error(`Modal with ID '${modalId}' not found!`);
+  // else console.error(`Modal with ID '${modalId}' not found!`);
 }
 
 export async function init() {

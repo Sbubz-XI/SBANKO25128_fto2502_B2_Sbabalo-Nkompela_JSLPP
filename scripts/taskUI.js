@@ -113,7 +113,6 @@ function setupEventListeners() {
     navModal.open ? navModal.close() : navModal.showModal();
   });
 
-  setupThemeToggle();
 }
 
 document.addEventListener("DOMContentLoaded", async () => {

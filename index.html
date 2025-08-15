@@ -23,6 +23,8 @@
     class="flex max-w-screen h-screen"
     style="font-family: 'Plus Jakarta Sans', sans-serif">
 
+    <!-- NAVIGATION SIDEBAR -->
+
     <nav id="sidebar" class="hidden md:block relative bg-white dark:bg-[#2B2C37] shadow-xl border-[#828FA3] dark:border-white pr-4 h-svh w-75 md:w-75">
       
       <i
@@ -198,9 +200,11 @@
 
               <div class="theme-btn bg-[#f4f7fd] dark:bg-[#635FC7] ">
                 <div class="theme-icon">☀️</div>
-                  <div class="outer-btn bg-[#635FC7] dark:bg-[#20212C]" id="theme-toggle">
-                    <div id="dark-mode-toggle" class="inner-btn"></div>
+
+                  <div class="outer-btn theme-toggle-btn bg-[#635FC7] dark:bg-[#20212C]">
+                    <div class="inner-btn"></div>
                   </div>
+
                 <div class="theme-icon">🌑</div>
               </div>
             </nav>
@@ -210,9 +214,11 @@
           <template id="theme-button-template" >
             <div class="theme-btn bg-[#f4f7fd] dark:bg-[#635FC7]">
               <div class="theme-icon">☀️</div>
-                <div class="outer-btn bg-[#635FC7] dark:bg-[#20212C]" id="theme-toggle">
-                  <div id="dark-mode-toggle" class="inner-btn"></div>
+
+                <div class="outer-btn theme-toggle-btn bg-[#635FC7] dark:bg-[#20212C]">
+                  <div class="inner-btn"></div>
                 </div>
+
               <div class="theme-icon">🌑</div>
             </div>
           </template>
@@ -222,12 +228,17 @@
     </div>
     
     <!-- FAST SCRIPTS -->
+
+    <!-- THEME BUTTON CLONE -->
     
     <script>
       const template = document.getElementById('theme-button-template');
       const clone = template.content.cloneNode(true);
       document.getElementById('theme-cln-btn').appendChild(clone);
     </script>
+
+    <!-- NAVIGATION MODAL -->
+
     <script>
       const navModal = document.getElementById('nav-modal');
       const closeBtn = document.getElementById('close-nav-modal-btn');
@@ -242,6 +253,9 @@
         console.log("logo has been pressed")
       });
     </script>
+
+    <!-- HIDESIDEBAR LOGIC -->
+
     <script>
       const sidebar = document.getElementById('sidebar');
       const hideBtn = document.getElementById('hide-sidebar-btn');
@@ -259,40 +273,56 @@
         console.log("Sidebar revealed");
       });
     </script>
-
+    
+    
+    <!-- THEME LOGIC -->
+    
     <script>
       const html = document.documentElement;
-      const toggleBtn = document.getElementById("theme-toggle");
-
+      const toggleBtns = document.querySelectorAll(".theme-toggle-btn");
       
+      
+      // Logic behind loading theme
       function toggleTheme() {
         const isDark = html.getAttribute("data-theme") === "dark";
 
         if (isDark) {
           html.removeAttribute("data-theme");
-          toggleBtn.classList.remove("dark-mode");
+
+          toggleBtns.forEach(btn => btn.classList.remove("dark-mode"));
+
           localStorage.setItem("theme", "light");
+
         } else {
           html.setAttribute("data-theme", "dark");
-          toggleBtn.classList.add("dark-mode");
+
+          toggleBtns.forEach(btn => btn.classList.add("dark-mode"));
+
           localStorage.setItem("theme", "dark");
+
         }
       }
 
-      
+      // Loadd previously set theme theme on page load
       (function () {
         const savedTheme = localStorage.getItem("theme");
+
         if (savedTheme === "dark") {
           html.setAttribute("data-theme", "dark");
-          toggleBtn.classList.add("dark-mode");
+
+          toggleBtns.forEach(btn => btn.classList.add("dark-mode"));
+
         } else {
           html.removeAttribute("data-theme");
-          toggleBtn.classList.remove("dark-mode");
+
+          toggleBtns.forEach(btn => btn.classList.remove("dark-mode"));
+
         }
       })();
 
       
-      toggleBtn.addEventListener("click", toggleTheme);
+      toggleBtns.forEach(btn => btn.addEventListener("click", toggleTheme));
+
     </script>
 
 
