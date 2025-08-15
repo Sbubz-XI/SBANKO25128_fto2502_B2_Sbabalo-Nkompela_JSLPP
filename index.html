@@ -23,9 +23,8 @@
     class="flex max-w-screen h-screen"
     style="font-family: 'Plus Jakarta Sans', sans-serif">
 
-    <nav
-      class="hidden md:block relative bg-white dark:bg-[#2B2C37] shadow-xl border-[#828FA3] dark:border-white pr-4 h-screen w-75 md:w-75"
-    >
+    <nav id="sidebar" class="hidden md:block relative bg-white dark:bg-[#2B2C37] shadow-xl border-[#828FA3] dark:border-white pr-4 h-screen w-75 md:w-75">
+      
       <i
         class="hidden md:block w-45 h-20  bg-no-repeat bg-center bg-contain mx-3.5 my-2.5 "
         style="background-image: url('assets/logo-light.svg')"
@@ -45,6 +44,14 @@
       >
         Launch Career
       </button>
+
+      <button
+        id="dark-mode-toggle"
+        class="bg-[#635FC7] text-white text-md hover:bg-[#A8A4FF] font-semibold w-69 h-11 py-2 pr-15 rounded-r-3xl"
+      >
+        dark
+      </button>
+
 
       <div class="sidebar-footer">
         
@@ -82,10 +89,10 @@
         <div
           class="absolute right-0  md:justify-end md:items-center md:mr-5 flex gap-2"
         >
-          <button id="add-task-button" class="open-add-task-btn cursor-pointer hidden md:flex bg-[#635FC7] text-white p-2 rounded-2xl w-full">
+          <button id="add-task-button-desktop" class="open-add-task-btn cursor-pointer hidden md:flex bg-[#635FC7] text-white p-2 rounded-2xl w-full">
             + Add New Task
           </button>
-          <button id="add-task-button" class="open-add-task-btn cursor-pointer flex md:hidden bg-[#635FC7] text-white text-3xl items-center justify-center w-9 h-9 pb-2 rounded-2xl mr-3">
+          <button id="add-task-button-mobile" class="open-add-task-btn cursor-pointer flex md:hidden bg-[#635FC7] text-white text-3xl items-center justify-center w-9 h-9 pb-2 rounded-2xl mr-3">
             +
           </button>
         </div>
@@ -217,6 +224,9 @@
         </main>
       </div>
     </div>
+    
+    <!-- FAST SCRIPTS -->
+    
     <script>
       const template = document.getElementById('theme-button-template');
       const clone = template.content.cloneNode(true);
@@ -234,6 +244,23 @@
       closeBtn.addEventListener('click', () => {
         navModal.classList.remove('show');
         console.log("logo has been pressed")
+      });
+    </script>
+    <script>
+      const sidebar = document.getElementById('sidebar');
+      const hideBtn = document.getElementById('hide-sidebar-btn');
+      const revealBtn = document.getElementById('reveal-sidebar-btn');
+
+      hideBtn.addEventListener('click', () => {
+        sidebar.classList.add('sidebar-hidden');
+        revealBtn.classList.remove('sidebar-hidden');
+        console.log("Sidebar hidden");
+      });
+
+      revealBtn.addEventListener('click', () => {
+        sidebar.classList.remove('sidebar-hidden');
+        revealBtn.classList.add('sidebar-hidden');
+        console.log("Sidebar revealed");
       });
     </script>
     <script src="scripts/taskManager.js" type="module" defer></script>

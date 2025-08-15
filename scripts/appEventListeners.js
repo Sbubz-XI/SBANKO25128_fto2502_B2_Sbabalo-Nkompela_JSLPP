@@ -12,14 +12,13 @@ import {
 import { updateTaskUI, hideSidebar, revealSidebar } from './taskUI.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Add New Task buttons (desktop + mobile)
+  
   const addTaskBtn = document.getElementById('add-task-button');
   const addTaskBtnMobile = document.getElementById('add-task-button-mobile');
 
   if (addTaskBtn) addTaskBtn.addEventListener('click', openAddTaskModal);
   if (addTaskBtnMobile) addTaskBtnMobile.addEventListener('click', openAddTaskModal);
 
-  // Save New Task button
   const saveNewTaskBtn = document.getElementById('save-new-task-btn');
   if (saveNewTaskBtn) {
     saveNewTaskBtn.addEventListener('click', () => {
@@ -30,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (saveNewTask(title, description, status)) {
         closeModal('add-task-modal');
         updateTaskUI();
-        // Clear inputs after saving
+        
         document.getElementById('new-task-title').value = '';
         document.getElementById('new-task-desc').value = '';
         document.getElementById('new-task-status').value = 'todo';
@@ -38,19 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close Add Task Modal button
+  
   const closeAddModalBtn = document.getElementById('close-add-modal-btn');
   if (closeAddModalBtn) {
     closeAddModalBtn.addEventListener('click', () => closeModal('add-task-modal'));
   }
 
-  // Close Edit Task Modal button
+  
   const closeTaskModalBtn = document.getElementById('close-task-modal-btn');
   if (closeTaskModalBtn) {
     closeTaskModalBtn.addEventListener('click', () => closeModal('task-modal'));
   }
 
-  // Save Edited Task button
+  
   const saveTaskBtn = document.getElementById('save-task-btn');
   if (saveTaskBtn) {
     saveTaskBtn.addEventListener('click', () => {
@@ -67,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Delete Task button
+  
   const deleteTaskBtn = document.getElementById('deleteTaskBtn');
   if (deleteTaskBtn) {
     deleteTaskBtn.addEventListener('click', () => {
@@ -81,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile Logo click to toggle nav modal
+  
   const mobileLogo = document.getElementById('mobile-logo');
   if (mobileLogo) {
     mobileLogo.addEventListener('click', () => {
@@ -93,14 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Close Nav Modal button
+  
   const closeNavModalBtn = document.getElementById('close-nav-modal-btn');
   if (closeNavModalBtn) {
     closeNavModalBtn.addEventListener('click', () => closeModal('nav-modal'));
   }
 
 
-  // Hide sidebar button
+  /
   const hideSidebarBtn = document.getElementById("hide-sidebar-btn");
   const revealSidebarBtn = document.getElementById("reveal-sidebar-btn");
 

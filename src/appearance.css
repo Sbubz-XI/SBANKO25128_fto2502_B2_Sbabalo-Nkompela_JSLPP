@@ -57,8 +57,15 @@
   background-color: #635FC740;
 }
 
+.sidebar-hidden {
+  display: none;
+}
+
 .reveal-sidebar {
   font-size: x-large;
+  position: fixed;
+  bottom: 15%;
+  left:0px;
   display: flex;
   justify-content: center;
   padding: 7px;
@@ -73,4 +80,19 @@
 .reveal-sidebar:hover {
   cursor: pointer;
   background-color: #635fc7;
+}
+
+/* to prevent sidebar from popping up */
+@media (max-width: 767px) {
+  #sidebar {
+    display: none !important; 
+  }
+
+  #hide-sidebar-btn {
+    display: none !important; 
+  }
+
+  #reveal-sidebar-btn {
+    display: none !important;
+  }
 }

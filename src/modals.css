@@ -1,4 +1,4 @@
-/* Remove default dialog styles */
+
 dialog {
   position: fixed;
 
@@ -13,7 +13,7 @@ dialog {
   color: black;
 }
 
-/* Style the modal box */
+
 #task-modal::backdrop {
   background: rgba(0, 0, 0, 0.3);
 }
@@ -27,7 +27,7 @@ dialog {
   width: 90%;
   max-width: 600px;
   padding: 24px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
@@ -35,7 +35,7 @@ dialog {
   justify-content: center;
 }
 
-/* Header */
+
 .close-modal {
   position: absolute;
   top: 16px;
@@ -47,7 +47,7 @@ dialog {
   cursor: pointer;
   color: #ea5555;
   transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
-  transition-delay: 0.1s; /* Delay before scaling */
+  transition-delay: 0.1s; 
 }
 
 .save-modal {
@@ -90,7 +90,7 @@ dialog {
   cursor: pointer;
   color: #ea5555;
   transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
-  transition-delay: 0.1s; /* Delay before scaling */
+  transition-delay: 0.1s; 
 }
 
 .close-btn:hover {
@@ -102,7 +102,7 @@ dialog {
   outline: none;
 }
 
-/* Form elements */
+
 form label {
   display: block;
   font-weight: 600;
@@ -125,7 +125,7 @@ form select {
 }
 
 form select {
-  appearance: none; /* Remove native arrow */
+  appearance: none; 
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23828FA3" stroke-width="3" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>')
     no-repeat right 0.75rem center;
 
@@ -133,7 +133,7 @@ form select {
   padding-right: 1rem;
 }
 
-/* Style the Add Task modal box */
+
 #add-task-modal::backdrop {
   background: rgba(0, 0, 0, 0.3);
 }
@@ -149,7 +149,7 @@ form select {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Header */
+
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -162,7 +162,7 @@ form select {
   font-size: 1.125rem;
 }
 
-/* Close button */
+
 .close-btn {
   background: none;
   border: none;
@@ -171,7 +171,7 @@ form select {
   cursor: pointer;
   color: #ea5555;
   transition: transform 0.2s ease-in-out, font-weight 0.2s ease-in-out;
-  transition-delay: 0.1s; /* Delay before scaling */
+  transition-delay: 0.1s; 
 }
 
 .close-btn:hover {
@@ -183,7 +183,7 @@ form select {
   outline: none;
 }
 
-/* Form elements */
+
 form label {
   display: block;
   font-weight: 600;
@@ -206,7 +206,7 @@ form select {
 }
 
 form select {
-  appearance: none; /* Remove native arrow */
+  appearance: none; 
   background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="%23828FA3" stroke-width="3" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>')
     no-repeat right 0.75rem center;
 

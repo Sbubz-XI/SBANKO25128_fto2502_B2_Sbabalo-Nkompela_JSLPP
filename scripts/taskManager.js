@@ -7,7 +7,7 @@ export let Tasks = [];
 
 const generateUniqueId = () => Date.now() + Math.floor(Math.random() * 1000);
 
-// fetch API tasks function
+
 export async function fetchTasksFromAPI() {
 
   const loadingScreen = document.getElementById("loading-screen");
@@ -26,7 +26,7 @@ export async function fetchTasksFromAPI() {
 
     const storedTasks = loadTasksFromLocalStorage();
 
-    // Merge and dedupe by id
+    
     const mergedMap = new Map();
 
     [...storedTasks, ...apiTasks].forEach(task => mergedMap.set(task.id, task));
@@ -121,7 +121,7 @@ export function deleteTask(taskId) {
 export function openAddTaskModal() {
   const modal = document.getElementById("add-task-modal");
   if (modal) modal.showModal();
-  else console.error("❌ Add Task Modal not found!");
+  else console.error("Add Task Modal not found!");
 }
 
 export function openEditTaskModal(taskId) {
@@ -130,7 +130,7 @@ export function openEditTaskModal(taskId) {
 
   const modal = document.getElementById("task-modal");
   if (!modal) {
-    console.error("❌ Edit Task Modal not found!");
+    console.error("Edit Task Modal not found!");
     return;
   }
 
@@ -145,7 +145,7 @@ export function openEditTaskModal(taskId) {
 export function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) modal.close();
-  else console.error(`❌ Modal with ID '${modalId}' not found!`);
+  else console.error(`Modal with ID '${modalId}' not found!`);
 }
 
 export async function init() {
@@ -153,4 +153,24 @@ export async function init() {
   if (Tasks.length === 0) {
     await fetchTasksFromAPI();
   }
+
+  
+  const addBtnDesktop = document.getElementById("add-task-button-desktop");
+  const addBtnMobile = document.getElementById("add-task-button-mobile");
+  if (addBtnDesktop) addBtnDesktop.addEventListener("click", openAddTaskModal);
+  if (addBtnMobile) addBtnMobile.addEventListener("click", openAddTaskModal);
+
+  
+  const saveNewBtn = document.getElementById("save-new-task-btn");
+  if (saveNewBtn) {
+    saveNewBtn.addEventListener("click", () => {
+      const title = document.getElementById("task-title").value;
+      const desc = document.getElementById("task-desc").value;
+      const status = document.getElementById("task-status").value;
+      const success = saveNewTask(title, desc, status);
+      if (success) closeModal("add-task-modal");
+    });
+  }
+
+
 }

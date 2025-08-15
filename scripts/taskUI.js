@@ -10,10 +10,6 @@ import {
   init,
 } from "./taskManager.js";
 
-
-
-import { loadThemeFromLocalStorage, saveThemeToLocalStorage } from "./storage.js";
-
 function clearTaskColumns() {
   document.querySelectorAll(".column").forEach(col => (col.innerHTML = ""));
 }
