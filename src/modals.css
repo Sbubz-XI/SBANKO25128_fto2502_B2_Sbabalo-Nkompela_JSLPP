@@ -1,11 +1,10 @@
 
 dialog {
   position: fixed;
-
   border: none;
   padding: 0;
   margin: 0;
-  background: none;
+  
 }
 
 .input-styles {
@@ -27,12 +26,27 @@ dialog {
   width: 90%;
   max-width: 600px;
   padding: 24px;
-  
   font-family: "Plus Jakarta Sans", sans-serif;
 }
 
+
+
+/* Modal Buttons */
+
 .modal-buttons {
+  display: flex;
   justify-content: center;
+  gap: 10px;
+  margin-top: 1rem ;
+}
+
+@media (max-width: 767px) {
+  .modal-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
 }
 
 
@@ -50,13 +64,23 @@ dialog {
   transition-delay: 0.1s; 
 }
 
+.save-task-modal {
+   justify-content: center;
+  color: white;
+  background-color: #635fc7;
+  border-radius: 20px;
+  
+  width: 100%;
+  height: 2.5rem;
+}
+
 .save-modal {
   justify-content: center;
   color: white;
   background-color: #635fc7;
   border-radius: 20px;
-  margin-top: 1rem;
-  width: 50%;
+  
+  width: 100%;
   height: 2.5rem;
 }
 
@@ -65,21 +89,9 @@ dialog {
   color: white;
   background-color: #ea5555;
   border-radius: 20px;
-  margin-top: 1rem;
-  width: 50%;
+  
+  width: 100%;
   height: 2.5rem;
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.modal-header h3 {
-  margin: 0;
-  font-size: 1.125rem;
 }
 
 .close-btn {
@@ -101,6 +113,22 @@ dialog {
 .close-btn:focus {
   outline: none;
 }
+
+/* MODAL PROPERTIES */
+
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
 
 
 form label {
@@ -214,35 +242,38 @@ form select {
   padding-right: 1rem;
 }
 
-.modal-nav {
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -40%);
-  border-radius: 8px;
-  width: 50%;
-  max-width: 330px;
-  padding: 20px 20px 20px 0px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  display: flexbox;
-  justify-content: center;
-  position: relative;
 
-}
+
+
+/* Navigation Modal Styling */
 
 #nav-modal {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 90%;
-  max-width: 600px;
-  height: 100%;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 50;
-  background-color: rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-items: center;
 }
 
 #nav-modal.show {
   display: block;
+  padding: 100px 10px 0px 30px;
+  justify-content: center;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.modal-nav {
+  border-radius: 8px;
+  width: 90%;
+  max-width: 330px;
+  padding: 20px 20px 20px 0px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flexbox;
+  align-items: center;
+  animation: slideUp 0.25s ease-out;
+  position: relative;
 }
 
 #close-nav-modal-btn {
@@ -250,3 +281,16 @@ form select {
   top: 0;
   right: 7%;
 }
+
+
+@keyframes fadeIn {
+  from { background-color: rgba(0, 0, 0, 0); }
+  to { background-color: rgba(0, 0, 0, 0.4); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+

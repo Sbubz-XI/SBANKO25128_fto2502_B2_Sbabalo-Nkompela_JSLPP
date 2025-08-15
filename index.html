@@ -23,7 +23,7 @@
     class="flex max-w-screen h-screen"
     style="font-family: 'Plus Jakarta Sans', sans-serif">
 
-    <nav id="sidebar" class="hidden md:block relative bg-white dark:bg-[#2B2C37] shadow-xl border-[#828FA3] dark:border-white pr-4 h-screen w-75 md:w-75">
+    <nav id="sidebar" class="hidden md:block relative bg-white dark:bg-[#2B2C37] shadow-xl border-[#828FA3] dark:border-white pr-4 h-svh w-75 md:w-75">
       
       <i
         class="hidden md:block w-45 h-20  bg-no-repeat bg-center bg-contain mx-3.5 my-2.5 "
@@ -91,9 +91,9 @@
         </div>
       </header>
 
-      <div class="bg-[#F4F7FD] dark:bg-[#20212C] border-[#828FA3] dark:border-white w-full h-full">
+      <div class="bg-[#F4F7FD] dark:bg-[#20212C] border-[#828FA3] dark:border-white w-full h-svh md:h-screen ">
         <main>
-          <div class="pl-4 pt-5 pr-4 w-screen md:pr-40 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7">
+          <div class=" pl-4 pt-5 pr-4 w-screen md:pr-40 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7">
               <div id="loading-screen" style="display: none;">Loading...</div>
 
               <div>
@@ -176,19 +176,22 @@
               </select>
 
               <div class="modal-buttons">
-                <button type="button" id="save-new-task-btn" class="save-modal">Create Task</button>
+                <button type="button" id="save-new-task-btn" class="save-task-modal">Create Task</button>
               </div>
             </form>
           </dialog>
 
           <!-- Mini Modal for Navigation -->
-          <div id="nav-modal" class="md:hidden fixed inset-0 z-50">
+          <div id="nav-modal" class="md:hidden fixed z-50">
 
             <nav class="modal-nav bg-white dark:bg-[#2B2C37]">
+              
+              <label class="text-[#828FA3] text-md ml-7 py-3.5">ALL BOARDS (1)</label>
+
               <button id="close-nav-modal-btn" class="close-btn">
                 &times;
               </button>
-              <label class="text-[#828FA3] text-md ml-7 py-3.5">ALL BOARDS (1)</label>
+
               <button class="bg-[#635FC7] text-white text-md hover:bg-[#A8A4FF] font-semibold w-69 h-11 py-2 pr-15 rounded-r-3xl">
                 Launch Career
               </button>
