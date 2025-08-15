@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  /
+
   const hideSidebarBtn = document.getElementById("hide-sidebar-btn");
   const revealSidebarBtn = document.getElementById("reveal-sidebar-btn");
 
